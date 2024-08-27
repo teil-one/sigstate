@@ -1,0 +1,34 @@
+{
+  "name": "@teil-one/sigstate",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rslib build",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@rsbuild/core": "1.0.1-beta.14",
+    "@rslib/core": "^0.0.3",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^8.0.1"
+  },
+  "dependencies": {
+    "signal-polyfill": "^0.1.2"
+  }
+}
