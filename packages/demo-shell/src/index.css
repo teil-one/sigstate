@@ -40,16 +40,23 @@ button {
   justify-content: justify;
 }
 
-.content > #cart {
+.content > * {
   display: flex;
-  width: 40%;
-  /* padding: 20px; */
   border: 2px solid #d3d3d3;
   border-radius: 32px;
   overflow: hidden;
 }
 
-.content > #cart iframe {
+.content iframe {
   border: none;
   width: 100%;
+}
+
+#cart {
+  width: 40%;
+}
+
+#payment {
+  width: 60%;
+  margin-left: 20px;
 }

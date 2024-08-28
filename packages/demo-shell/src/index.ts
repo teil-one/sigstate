@@ -10,6 +10,9 @@ document.querySelector('#root')!.innerHTML = `
   <div id="cart">
     <iframe src="http://localhost:3001"></iframe>
   </div>
+  <div id="payment">
+    <iframe src="http://localhost:4200"></iframe>
+  </div>
 </div>
 `;
 

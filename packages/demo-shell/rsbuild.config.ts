@@ -5,6 +5,8 @@ export default defineConfig({
     title: 'Shell',
   },
   server: {
-    open: true,
+    open: {
+      before: () => new Promise((resolve) => setTimeout(resolve, 1000)),
+    },
   },
 });
