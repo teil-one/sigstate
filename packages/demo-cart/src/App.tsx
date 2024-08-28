@@ -1,21 +1,13 @@
-import { signal, effect } from '@preact/signals';
-import { Sigstate } from '@teil-one/sigstate';
+import { effect, computed } from '@preact/signals';
+import { PreactSigstate } from '@teil-one/sigstate-preact-adapter';
 import './App.css';
 
-const count = Sigstate.set<number>('demo.count', 0);
-// const count = new Signal.State(0);
+const count = PreactSigstate.get<number>('demo.count');
 
-const preactCount = signal(0);
-
-Sigstate.effect(() => {
-  const c = count.get();
-  preactCount.value = c;
-
-  console.log('!! effect Sigstate demo.count', c);
-});
+const doubleCount = computed(() => (count.value ?? 0) * 2);
 
 effect(() => {
-  count.set(preactCount.value);
+  console.log('!! Preact effect on count', count.value);
 });
 
 const App = () => {
@@ -24,11 +16,10 @@ const App = () => {
       <h1>Rsbuild with Preact</h1>
       <button
         onClick={() => {
-          console.log('!! click');
-          preactCount.value = preactCount.value + 1;
+          count.value = (count.value ?? 0) + 1;
         }}
       >
-        {preactCount.value}
+        count: {count.value ?? 'undefined'}, double: {doubleCount.value}
       </button>
     </div>
   );

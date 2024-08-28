@@ -3,8 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"bun run build --watch\" \"bun run --cwd ./packages/demo-shell dev\" \"bun run --cwd ./packages/demo-cart dev\"",
-    "build": "bun run --cwd ./packages/sigstate build",
+    "start": "concurrently \"bun run build:watch\" \"bun run --cwd ./packages/demo-shell dev\" \"bun run --cwd ./packages/demo-cart dev\"",
+    "build": "bun run --cwd ./packages/sigstate build && bun run --cwd ./packages/sigstate-preact-adapter build",
+    "build:watch": "concurrently \"bun run --cwd ./packages/sigstate build --watch\" \"bun run --cwd ./packages/sigstate-preact-adapter build --watch\"",
     "format": "prettier --write .",
     "lint": "eslint ."
   },
@@ -12,6 +13,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.0.1"
   }
 }

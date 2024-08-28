@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "preact": "^10.23.1",
-    "@teil-one/sigstate": "workspace:*",
+    "@teil-one/sigstate-preact-adapter": "workspace:*",
     "@preact/signals": "^1.3.0"
   },
   "devDependencies": {
