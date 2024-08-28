@@ -1,6 +1,7 @@
 {
-  "name": "@teil-one/sigstate-preact-adapter",
-  "version": "1.0.0",
+  "name": "@sigstate/core",
+  "version": "0.1.0",
+  "description": "A universal state management library based on the Signals standard proposal",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -11,15 +12,10 @@
     }
   },
   "scripts": {
-    "build": "rslib build",
-    "format": "prettier --write .",
-    "lint": "eslint ."
+    "build": "rslib build"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "dependencies": {
-    "@preact/signals": "^1.3.0"
+    "signal-polyfill": "^0.1.2"
   },
   "devDependencies": {
     "@rslib/core": "^0.0.3"

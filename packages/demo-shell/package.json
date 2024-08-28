@@ -1,18 +1,15 @@
 {
   "name": "demo-shell",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "scripts": {
     "build": "rsbuild build",
-    "dev": "rsbuild dev",
-    "format": "prettier --write .",
-    "lint": "eslint .",
-    "preview": "rsbuild preview"
+    "dev": "rsbuild dev"
   },
   "dependencies": {
-    "@teil-one/sigstate": "workspace:*"
+    "@sigstate/core": "workspace:*"
   },
   "devDependencies": {
-    "@rsbuild/core": "1.0.1-beta.14"
+    "@rsbuild/core": "1.0.1-beta.16"
   }
 }

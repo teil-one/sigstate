@@ -24,7 +24,7 @@
   "include": ["src"],
   "references": [
     {
-      "path": "../sigstate"
+      "path": "../sigstate-core"
     }
   ]
 }

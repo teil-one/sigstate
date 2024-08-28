@@ -1,5 +1,5 @@
 import './index.css';
-import { Sigstate } from '@teil-one/sigstate';
+import { Sigstate } from '@sigstate/core';
 
 Sigstate.addTrustedOrigins(['http://localhost:3001']);
 

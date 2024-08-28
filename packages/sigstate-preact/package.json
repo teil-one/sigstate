@@ -1,6 +1,6 @@
 {
-  "name": "@teil-one/sigstate",
-  "version": "1.0.0",
+  "name": "@sigstate/preact",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -11,12 +11,13 @@
     }
   },
   "scripts": {
-    "build": "rslib build",
-    "format": "prettier --write .",
-    "lint": "eslint ."
+    "build": "rslib build"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "signal-polyfill": "^0.1.2"
+    "@preact/signals": "^1.3.0"
   },
   "devDependencies": {
     "@rslib/core": "^0.0.3"

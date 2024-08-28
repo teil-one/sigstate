@@ -1,5 +1,5 @@
 import { effect, Signal } from '@preact/signals';
-import { Sigstate, Signal as SigstateSignal } from '@teil-one/sigstate';
+import { Sigstate, Signal as SigstateSignal } from '@sigstate/core';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const signals = new Map<string, Signal<any>>();

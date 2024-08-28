@@ -1,5 +1,5 @@
 import { effect, computed } from '@preact/signals';
-import { PreactSigstate } from '@teil-one/sigstate-preact-adapter';
+import { PreactSigstate } from '@sigstate/preact';
 import './App.css';
 
 const count = PreactSigstate.get<number>('demo.count');
