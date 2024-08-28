@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
+    "types": [],
     "lib": ["DOM", "ES2020", "DOM.Iterable"],
     "module": "ESNext",
     "strict": true,
@@ -18,7 +19,7 @@
     "declarationDir": "dist",
     "rootDir": "src",
     "outDir": "dist",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
   },
   "include": ["src"],
 }

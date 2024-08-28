@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"bun run build --watch\" \"bun run --cwd ./packages/demo-shell dev\"",
+    "start": "concurrently \"bun run build --watch\" \"bun run --cwd ./packages/demo-shell dev\" \"bun run --cwd ./packages/demo-cart dev\"",
     "build": "bun run --cwd ./packages/sigstate build",
     "format": "prettier --write .",
     "lint": "eslint ."

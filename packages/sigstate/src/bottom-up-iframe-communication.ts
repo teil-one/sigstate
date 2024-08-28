@@ -41,11 +41,11 @@ export function ensureBottomUpIframeCommunicationForAllSignals() {
       if (changedValues.size === 0) return;
 
       console.log(
-        `!! post ${window.document.title} -> ${window.parent.document.title} `,
+        `!! post ${window.document.title} -> <Parent> `,
         changedValues,
       );
 
-      window.parent.postMessage({ store: true, signals: changedValues });
+      window.parent.postMessage({ store: true, signals: changedValues }, '*');
 
       lastPostedValues = message;
     });

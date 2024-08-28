@@ -1,8 +1,6 @@
 import { Signal } from 'signal-polyfill';
 
-// biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
 export function effect(callback: () => (() => unknown) | void) {
-  // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
   let cleanup: (() => unknown) | void;
 
   const computed = new Signal.Computed(() => {

@@ -1,27 +1,55 @@
+@font-face {
+  font-family: 'Virgil';
+  src: url('/public/Virgil.woff2');
+}
+
 body {
   margin: 0;
-  color: #fff;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(to bottom, #020917, #101725);
+  color: #d3d3d3;
+  font-family: Virgil, Inter, Avenir, Helvetica, Arial, sans-serif;
+  background: #121212;
 }
 
-.content {
-  display: flex;
-  min-height: 100vh;
-  line-height: 1.1;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.content h1 {
+.h1 {
   font-size: 3.6rem;
   font-weight: 700;
 }
 
-.content button {
+button {
   width: 100px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  line-height: 1.1;
+  text-align: center;
+  flex-direction: row;
+  justify-content: justify;
+}
+
+.content > #cart {
+  display: flex;
+  width: 40%;
+  /* padding: 20px; */
+  border: 2px solid #d3d3d3;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.content > #cart iframe {
+  border: none;
+  width: 100%;
 }
