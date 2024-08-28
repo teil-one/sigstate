@@ -4,4 +4,7 @@ export default defineConfig({
   html: {
     title: 'Shell',
   },
+  server: {
+    open: true,
+  },
 });
