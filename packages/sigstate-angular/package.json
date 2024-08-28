@@ -1,0 +1,25 @@
+{
+  "name": "@sigstate/angular",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rslib build"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@angular/core": "^18.2.0"
+  },
+  "devDependencies": {
+    "@rslib/core": "^0.0.3"
+  }
+}

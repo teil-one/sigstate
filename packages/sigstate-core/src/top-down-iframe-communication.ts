@@ -136,6 +136,7 @@ function postMessageToIframe(iframe: HTMLIFrameElement, origin: string) {
   });
 }
 
+// TODO: For bottom-up events listen only for events from trusted origins
 window.addEventListener(
   'message',
   (message) => {

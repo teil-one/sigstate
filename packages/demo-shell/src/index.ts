@@ -1,7 +1,7 @@
 import './index.css';
 import { sigstate, effect, addTrustedOrigins } from '@sigstate/core';
 
-addTrustedOrigins(['http://localhost:3001']);
+addTrustedOrigins(['http://localhost:3001', 'http://localhost:4200']);
 
 document.querySelector('#root')!.innerHTML = `
 <h1>Sigstate</h1>

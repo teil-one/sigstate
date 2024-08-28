@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "start": "concurrently \"bun run build:watch\" \"bun run --cwd ./packages/demo-payment start\" \"bun run --cwd ./packages/demo-cart dev\" \"bun run --cwd ./packages/demo-shell dev\"",
-    "build": "bun run --cwd ./packages/sigstate-core build && bun run --cwd ./packages/sigstate-preact build",
-    "build:watch": "concurrently \"bun run --cwd ./packages/sigstate-core build --watch\" \"bun run --cwd ./packages/sigstate-preact build --watch\"",
+    "start": "concurrently \"bun run build:watch\" \"bun run --cwd ./packages/demo-cart dev\" \"bun run --cwd ./packages/demo-shell dev\" \"bun run sleep && bun run --cwd ./packages/demo-payment start\"",
+    "build": "bun run --cwd ./packages/sigstate-core build && bun run --cwd ./packages/sigstate-preact build && bun run --cwd ./packages/sigstate-angular build",
+    "build:watch": "concurrently \"bun run --cwd ./packages/sigstate-core build --watch\" \"bun run --cwd ./packages/sigstate-preact build --watch\" \"bun run --cwd ./packages/sigstate-angular build --watch\"",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sleep": "bun -e \"setTimeout(()=>{}, 1000)\""
   },
   "workspaces": [
     "packages/*"
