@@ -1,6 +1,6 @@
 import { signals } from './constants';
 import { diff } from './diff';
-import { Sigstate } from './sigstate';
+import { effect } from './effect';
 
 let dropExistingEffect: () => void;
 let timeout: number | undefined;
@@ -25,7 +25,7 @@ export function ensureBottomUpIframeCommunicationForAllSignals() {
       dropExistingEffect();
     }
 
-    dropExistingEffect = Sigstate.effect(() => {
+    dropExistingEffect = effect(() => {
       const message = new Map<string, unknown>();
 
       for (const signalName of signals.keys()) {

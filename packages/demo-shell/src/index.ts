@@ -1,7 +1,7 @@
 import './index.css';
-import { Sigstate } from '@sigstate/core';
+import { sigstate, effect, addTrustedOrigins } from '@sigstate/core';
 
-Sigstate.addTrustedOrigins(['http://localhost:3001']);
+addTrustedOrigins(['http://localhost:3001']);
 
 document.querySelector('#root')!.innerHTML = `
 <h1>Sigstate</h1>
@@ -16,13 +16,13 @@ document.querySelector('#root')!.innerHTML = `
 const counter = document.getElementById('counter');
 
 if (counter) {
-  const count = Sigstate.set('demo.count', 0);
+  const count = sigstate('demo.count', 0);
 
   counter.addEventListener('click', () => {
     count.set(count.get() + 1);
   });
 
-  Sigstate.effect(() => {
+  effect(() => {
     counter.innerHTML = `count: ${count.get()}`;
   });
 }

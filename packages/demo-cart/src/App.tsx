@@ -1,10 +1,10 @@
 import { effect, computed } from '@preact/signals';
-import { PreactSigstate } from '@sigstate/preact';
+import { sigstate } from '@sigstate/preact';
 import './App.css';
 
-const count = PreactSigstate.get<number>('demo.count');
+const count = sigstate('demo.count', 0);
 
-const doubleCount = computed(() => (count.value ?? 0) * 2);
+const doubleCount = computed(() => count.value * 2);
 
 effect(() => {
   console.log('!! Preact effect on count', count.value);
@@ -16,10 +16,10 @@ const App = () => {
       <h1>Rsbuild with Preact</h1>
       <button
         onClick={() => {
-          count.value = (count.value ?? 0) + 1;
+          count.value = count.value + 1;
         }}
       >
-        count: {count.value ?? 'undefined'}, double: {doubleCount.value}
+        count: {count.value}, double: {doubleCount.value}
       </button>
     </div>
   );

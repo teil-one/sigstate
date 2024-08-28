@@ -1,51 +1,42 @@
-import { effect, Signal } from '@preact/signals';
-import { Sigstate, Signal as SigstateSignal } from '@sigstate/core';
+import {
+  effect as preactEffect,
+  Signal as PreactSignal,
+} from '@preact/signals';
+import {
+  sigstate as sigstateCore,
+  Signal as SigstateSignal,
+  effect as sigstateEffect,
+} from '@sigstate/core';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const signals = new Map<string, Signal<any>>();
+const signals = new Map<string, PreactSignal<any>>();
 
-export class PreactSigstate {
-  static get<T>(name: string) {
-    const preactSignal = this.getSignal<T | undefined>(name, undefined);
+export function sigstate<T>(name: string, defaultValue: T) {
+  const signal = sigstateCore<T>(name, defaultValue);
 
-    return preactSignal;
+  let preactSignal = signals.get(name) as PreactSignal<T>;
+  if (!preactSignal) {
+    preactSignal = createPreactSignal<T>(name, defaultValue, signal);
   }
 
-  static set<T>(name: string, value: T) {
-    const preactSignal = this.getSignal<T>(name, value);
+  return preactSignal;
+}
 
-    preactSignal.value = value;
+function createPreactSignal<T>(
+  name: string,
+  value: T,
+  sigstateSignal: SigstateSignal.State<T>,
+) {
+  const preactSignal = new PreactSignal(value);
+  signals.set(name, preactSignal);
 
-    return preactSignal;
-  }
+  sigstateEffect(() => {
+    preactSignal.value = sigstateSignal.get();
+  });
 
-  private static getSignal<T>(name: string, value: T) {
-    const signal = Sigstate.get<T>(name);
+  preactEffect(() => {
+    sigstateSignal.set(preactSignal.value);
+  });
 
-    let preactSignal = signals.get(name) as Signal<T>;
-    if (!preactSignal) {
-      preactSignal = this.createPreactSignal<T>(name, value, signal);
-    }
-
-    return preactSignal;
-  }
-
-  protected static createPreactSignal<T>(
-    name: string,
-    value: T,
-    signal: SigstateSignal.State<T>,
-  ) {
-    const preactSignal = new Signal(value);
-    signals.set(name, preactSignal);
-
-    Sigstate.effect(() => {
-      preactSignal.value = signal.get();
-    });
-
-    effect(() => {
-      signal.set(preactSignal.value);
-    });
-
-    return preactSignal;
-  }
+  return preactSignal;
 }

@@ -1,6 +1,7 @@
 import { signals, trustedOrigins } from './constants';
 import { diff } from './diff';
-import { Sigstate } from './sigstate';
+import { effect } from './effect';
+import { sigstate } from './sigstate';
 
 const processedIframes = new Map<
   HTMLIFrameElement,
@@ -93,7 +94,7 @@ function postMessageToIframe(iframe: HTMLIFrameElement, origin: string) {
       dropExistingIframeEffect();
     }
 
-    dropExistingIframeEffect = Sigstate.effect(() => {
+    dropExistingIframeEffect = effect(() => {
       const message = new Map<string, unknown>();
 
       const lastPostedValues = lastPostedValuesByIframe.get(iframe);
@@ -147,7 +148,8 @@ window.addEventListener(
     for (const signalName of signalsInMessage.keys()) {
       const signalValue = signalsInMessage.get(signalName);
 
-      Sigstate.set(signalName, signalValue);
+      const signal = sigstate(signalName, signalValue);
+      signal.set(signalValue);
     }
   },
   false,
