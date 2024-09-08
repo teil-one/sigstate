@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { sigstate } from '@sigstate/angular';
+import { addTrustedOrigins } from '@sigstate/core';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,10 @@ import { sigstate } from '@sigstate/angular';
 export class AppComponent {
   title = 'demo-payment';
   count = sigstate('demo.count', 0);
+
+  constructor() {
+    addTrustedOrigins(['http://localhost:3002'])
+  }
 
   onClick() {
     this.count.update(value => value + 1);

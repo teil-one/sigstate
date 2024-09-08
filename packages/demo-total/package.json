@@ -1,0 +1,23 @@
+{
+  "name": "demo-total",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@preact/signals-react": "^2.2.0",
+    "@sigstate/react": "workspace:*"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "1.0.1-rc.5",
+    "@rsbuild/plugin-react": "1.0.1-rc.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.2"
+  }
+}

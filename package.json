@@ -7,14 +7,17 @@
     "start:shell": "bun run --cwd ./packages/demo-shell dev",
     "start:cart": "bun run --cwd ./packages/demo-cart dev",
     "start:payment": "bun run sleep && bun run --cwd ./packages/demo-payment start",
-    "build": "bun run build:core && concurrently \"bun run build:preact\" \"bun run build:angular\"",
+    "start:total": "bun run --cwd ./packages/demo-total dev",
+    "build": "bun run build:core && concurrently \"bun run build:preact\" \"bun run build:angular\" \"bun run build:react\"",
     "build:core": "bun run --cwd ./packages/sigstate-core build",
     "build:preact": "bun run --cwd ./packages/sigstate-preact build",
     "build:angular": "bun run --cwd ./packages/sigstate-angular build",
+    "build:react": "bun run --cwd ./packages/sigstate-react build",
     "build:watch": "concurrently \"bun run build:watch:*\"",
     "build:watch:core": "bun run --cwd ./packages/sigstate-core build --watch",
     "build:watch:preact": "bun run --cwd ./packages/sigstate-preact build --watch",
     "build:watch:angular": "bun run --cwd ./packages/sigstate-angular build --watch",
+    "build:watch:react": "bun run --cwd ./packages/sigstate-react build --watch",
     "format": "prettier --write .",
     "lint": "eslint .",
     "sleep": "bun -e \"setTimeout(()=>{}, 2000)\""
@@ -24,9 +27,9 @@
   ],
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "@eslint/js": "^9.9.0",
-    "eslint": "^9.9.0",
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
     "prettier": "^3.3.3",
-    "typescript-eslint": "^8.0.1"
+    "typescript-eslint": "^8.4.0"
   }
 }

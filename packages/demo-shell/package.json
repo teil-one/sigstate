@@ -10,6 +10,6 @@
     "@sigstate/core": "workspace:*"
   },
   "devDependencies": {
-    "@rsbuild/core": "1.0.1-beta.16"
+    "@rsbuild/core": "1.0.1-rc.5"
   }
 }

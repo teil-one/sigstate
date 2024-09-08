@@ -54,7 +54,11 @@ function replaySignalsToIframes(iframes: HTMLIFrameElement[]) {
     for (const iframe of iframes) {
       if (!iframe.src.startsWith(origin)) continue; // Skip iframes from other origins
 
-      if (iframe.contentDocument?.readyState === 'complete') {
+      // TODO: Check behaviors for all possible readyState (including undefined)
+      if (
+        !iframe.contentDocument ||
+        iframe.contentDocument.readyState === 'complete'
+      ) {
         postMessageToIframe(iframe, origin);
       } else {
         iframe.addEventListener('load', () => {
@@ -111,10 +115,7 @@ function postMessageToIframe(iframe: HTMLIFrameElement, origin: string) {
 
       if (changedValues.size === 0) return;
 
-      console.log(
-        `!! post ${document.title} -> ${iframe.contentDocument?.title} `,
-        changedValues,
-      );
+      console.log(`!! post ${document.title} -> <Child>`, iframe, changedValues);
 
       iframe.contentWindow?.postMessage(
         { store: true, signals: changedValues },

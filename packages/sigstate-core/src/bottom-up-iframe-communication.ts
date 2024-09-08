@@ -41,7 +41,8 @@ export function ensureBottomUpIframeCommunicationForAllSignals() {
       if (changedValues.size === 0) return;
 
       console.log(
-        `!! post ${window.document.title} -> <Parent> `,
+        `!! post ${window.document.title} -> <Parent>`,
+        window.parent,
         changedValues,
       );
 
