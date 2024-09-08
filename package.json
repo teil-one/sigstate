@@ -3,12 +3,21 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "start": "concurrently \"bun run build:watch\" \"bun run --cwd ./packages/demo-cart dev\" \"bun run --cwd ./packages/demo-shell dev\" \"bun run sleep && bun run --cwd ./packages/demo-payment start\"",
-    "build": "bun run --cwd ./packages/sigstate-core build && bun run --cwd ./packages/sigstate-preact build && bun run --cwd ./packages/sigstate-angular build",
-    "build:watch": "concurrently \"bun run --cwd ./packages/sigstate-core build --watch\" \"bun run --cwd ./packages/sigstate-preact build --watch\" \"bun run --cwd ./packages/sigstate-angular build --watch\"",
+    "start": "concurrently \"bun run build:watch\" \"bun run start:*\"",
+    "start:shell": "bun run --cwd ./packages/demo-shell dev",
+    "start:cart": "bun run --cwd ./packages/demo-cart dev",
+    "start:payment": "bun run sleep && bun run --cwd ./packages/demo-payment start",
+    "build": "bun run build:core && concurrently \"bun run build:preact\" \"bun run build:angular\"",
+    "build:core": "bun run --cwd ./packages/sigstate-core build",
+    "build:preact": "bun run --cwd ./packages/sigstate-preact build",
+    "build:angular": "bun run --cwd ./packages/sigstate-angular build",
+    "build:watch": "concurrently \"bun run build:watch:*\"",
+    "build:watch:core": "bun run --cwd ./packages/sigstate-core build --watch",
+    "build:watch:preact": "bun run --cwd ./packages/sigstate-preact build --watch",
+    "build:watch:angular": "bun run --cwd ./packages/sigstate-angular build --watch",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "sleep": "bun -e \"setTimeout(()=>{}, 1000)\""
+    "sleep": "bun -e \"setTimeout(()=>{}, 2000)\""
   },
   "workspaces": [
     "packages/*"
