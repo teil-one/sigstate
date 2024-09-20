@@ -16,8 +16,5 @@
   },
   "dependencies": {
     "signal-polyfill": "^0.1.2"
-  },
-  "devDependencies": {
-    "@rslib/core": "^0.0.3"
   }
 }
