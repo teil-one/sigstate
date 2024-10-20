@@ -36,6 +36,9 @@
     },
     {
       "path": "../../@sigstate/cross-iframe"
+    },
+    {
+      "path": "../../@sigstate/interop"
     }
   ]
 }

@@ -6,7 +6,6 @@ import { addTrustedOrigins } from '@sigstate/cross-iframe';
 })
 export class CrossIframeSigstateService {
   constructor() {
-    console.log('!! constructor angular');
     addTrustedOrigins(['http://localhost:3000', 'http://localhost:3002']);
   }
 }

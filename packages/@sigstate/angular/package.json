@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@angular/core": "^18.2.0",
-    "@sigstate/core": "workspace:*"
+    "@sigstate/core": "workspace:*",
+    "@sigstate/interop": "workspace:*"
   }
 }

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@preact/signals": "^1.3.0",
-    "@sigstate/core": "workspace:*"
+    "@sigstate/core": "workspace:*",
+    "@sigstate/interop": "workspace:*"
   }
 }

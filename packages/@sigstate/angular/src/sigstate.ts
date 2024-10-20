@@ -1,44 +1,11 @@
-import {
-  signal as angularSignalFunc,
-  effect as angularEffect,
-  WritableSignal as AngularSignal,
-} from '@angular/core';
+import { signal, effect, Signal, WritableSignal } from '@angular/core';
 
-import {
-  sigstate as sigstateCore,
-  Signal as SigstateSignal,
-  effect as sigstateEffect,
-} from '@sigstate/core';
+import { sigstateInterop } from '@sigstate/interop';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const signals = new Map<string, AngularSignal<any>>();
-
-export function sigstate<T>(name: string, defaultValue: T) {
-  const signal = sigstateCore<T>(name, defaultValue);
-
-  let angularSignal = signals.get(name) as AngularSignal<T>;
-  if (!angularSignal) {
-    angularSignal = createAngularSignal<T>(name, defaultValue, signal);
-  }
-
-  return angularSignal;
-}
-
-function createAngularSignal<T>(
-  name: string,
-  value: T,
-  sigstateSignal: SigstateSignal.State<T>,
-) {
-  const angularSignal = angularSignalFunc(value);
-  signals.set(name, angularSignal);
-
-  sigstateEffect(() => {
-    angularSignal.set(sigstateSignal.get());
-  });
-
-  angularEffect(() => {
-    sigstateSignal.set(angularSignal());
-  });
-
-  return angularSignal;
-}
+export const sigstate: <T>(name: string, defaultValue: T) => WritableSignal<T> =
+  sigstateInterop<WritableSignal<any>>(
+    <T>(value: T) => signal(value),
+    <T>(signal: Signal<T>) => signal(),
+    <T>(signal: WritableSignal<T>, value: T) => signal.set(value),
+    effect,
+  );

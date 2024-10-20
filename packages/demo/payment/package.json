@@ -22,7 +22,8 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10",
     "@sigstate/angular": "workspace:*",
-    "@sigstate/cross-iframe": "workspace:*"
+    "@sigstate/cross-iframe": "workspace:*",
+    "@sigstate/interop": "workspace:*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.1",

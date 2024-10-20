@@ -1,44 +1,11 @@
-import type { Signal as ReactSignal } from '@preact/signals-core';
-import {
-  effect as reactEffect,
-  signal as reactSignal,
-} from '@preact/signals';
-import {
-  type Signal as SigstateSignal,
-  sigstate as sigstateCore,
-  effect as sigstateEffect,
-} from '@sigstate/core';
+import type { Signal } from '@preact/signals-core';
+import { effect, signal } from '@preact/signals';
+import { sigstateInterop } from '@sigstate/interop';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const signals = new Map<string, ReactSignal<any>>();
-
-export function sigstate<T>(name: string, defaultValue: T) {
-  const signal = sigstateCore<T>(name, defaultValue);
-
-  let reactSignal = signals.get(name) as ReactSignal<T>;
-  if (!reactSignal) {
-    reactSignal = createReactSignal<T>(name, defaultValue, signal);
-  }
-
-  return reactSignal;
-}
-
-function createReactSignal<T>(
-  name: string,
-  value: T,
-  sigstateSignal: SigstateSignal.State<T>,
-) {
-  const rs = reactSignal(value);
-  signals.set(name, rs);
-
-  sigstateEffect(() => {
-    console.log('!! rs effect', rs.value);
-    rs.value = sigstateSignal.get();
-  });
-
-  reactEffect(() => {
-    sigstateSignal.set(rs.value);
-  });
-
-  return rs;
-}
+export const sigstate: <T>(name: string, defaultValue: T) => Signal<T> =
+  sigstateInterop<Signal>(
+    <T>(value: T) => signal(value),
+    <T>(signal: Signal<T>) => signal.value,
+    <T>(signal: Signal<T>, value: T) => (signal.value = value),
+    effect,
+  );
