@@ -1,0 +1,8 @@
+{
+  "name": "@sigstate/tests-performance",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@sigstate/core": "workspace:*"
+  }
+}

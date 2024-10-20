@@ -1,0 +1,21 @@
+{
+  "name": "@sigstate/cross-iframe",
+  "version": "0.1.0",
+  "description": "Passing signals between iframes for @sigstate/core",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rslib build"
+  },
+  "dependencies": {
+    "signal-polyfill": "^0.2.1",
+    "@sigstate/core": "workspace:*"
+  }
+}

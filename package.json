@@ -3,31 +3,38 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "start": "concurrently \"bun run build:watch\" \"bun run start:*\"",
-    "start:shell": "bun run --cwd ./packages/demo-shell dev",
-    "start:cart": "bun run --cwd ./packages/demo-cart dev",
-    "start:payment": "bun run sleep && bun run --cwd ./packages/demo-payment start",
-    "start:total": "bun run --cwd ./packages/demo-total dev",
+    "dev": "concurrently \"bun run build:watch\" \"bun run dev:*\"",
+    "dev:shell": "bun run sleep && bun run --cwd ./packages/demo/shell dev",
+    "dev:cart": "bun run sleep && bun run --cwd ./packages/demo/cart dev",
+    "dev:payment": "bun run sleep && bun run --cwd ./packages/demo/payment start",
+    "dev:total": "bun run sleep && bun run --cwd ./packages/demo/total dev",
+
     "build": "bun run build:core && concurrently \"bun run build:preact\" \"bun run build:angular\" \"bun run build:react\"",
-    "build:core": "bun run --cwd ./packages/sigstate-core build",
-    "build:preact": "bun run --cwd ./packages/sigstate-preact build",
-    "build:angular": "bun run --cwd ./packages/sigstate-angular build",
-    "build:react": "bun run --cwd ./packages/sigstate-react build",
+    "build:core": "bun run --cwd ./packages/@sigstate/core build",
+    "build:cross-iframe": "bun run --cwd ./packages/@sigstate/cross-iframe build",
+    "build:preact": "bun run --cwd ./packages/@sigstate/preact build",
+    "build:angular": "bun run --cwd ./packages/@sigstate/angular build",
+    "build:react": "bun run --cwd ./packages/@sigstate/react build",
+
     "build:watch": "concurrently \"bun run build:watch:*\"",
-    "build:watch:core": "bun run --cwd ./packages/sigstate-core build --watch",
-    "build:watch:preact": "bun run --cwd ./packages/sigstate-preact build --watch",
-    "build:watch:angular": "bun run --cwd ./packages/sigstate-angular build --watch",
-    "build:watch:react": "bun run --cwd ./packages/sigstate-react build --watch",
+    "build:watch:core": "bun run --cwd ./packages/@sigstate/core build --watch",
+    "build:watch:cross-iframe": "bun run --cwd ./packages/@sigstate/cross-iframe build --watch",
+    "build:watch:preact": "bun run --cwd ./packages/@sigstate/preact build --watch",
+    "build:watch:angular": "bun run --cwd ./packages/@sigstate/angular build --watch",
+    "build:watch:react": "bun run --cwd ./packages/@sigstate/react build --watch",
+
     "format": "prettier --write .",
     "lint": "eslint .",
     "sleep": "bun -e \"setTimeout(()=>{}, 2000)\""
   },
   "workspaces": [
-    "packages/*"
+    "packages/@sigstate/*",
+    "packages/demo/*"
   ],
   "devDependencies": {
     "@eslint/js": "^9.10.0",
-    "@rslib/core": "^0.0.6",
+    "@rslib/core": "^0.0.13",
+    "@types/bun": "^1.1.11",
     "concurrently": "^8.2.2",
     "eslint": "^9.10.0",
     "prettier": "^3.3.3",
