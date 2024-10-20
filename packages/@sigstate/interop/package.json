@@ -1,6 +1,6 @@
 {
   "name": "@sigstate/interop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Interop library for creating framework-specific (Preact/Angular/...) adapters for @sigstate/core",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

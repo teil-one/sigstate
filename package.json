@@ -1,7 +1,7 @@
 {
   "name": "sigstate",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "concurrently \"bun run build:watch\" \"bun run dev:*\"",
     "dev:shell": "bun run sleep3 && bun run --cwd ./packages/demo/shell dev",

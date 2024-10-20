@@ -1,6 +1,6 @@
 {
   "name": "@sigstate/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A universal state management library based on the Signals standard proposal",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
