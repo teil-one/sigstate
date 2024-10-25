@@ -1,6 +1,6 @@
 {
   "name": "@sigstate/interop",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Interop library for creating framework-specific (Preact/Angular/...) adapters for @sigstate/core",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -15,6 +16,6 @@
     "build": "rslib build"
   },
   "dependencies": {
-    "@sigstate/core": "workspace:*"
+    "@sigstate/core": "^0.3.0"
   }
 }

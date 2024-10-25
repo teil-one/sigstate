@@ -1,12 +1,13 @@
 {
   "name": "@sigstate/angular",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -15,7 +16,7 @@
   },
   "dependencies": {
     "@angular/core": "^18.2.0",
-    "@sigstate/core": "workspace:*",
-    "@sigstate/interop": "workspace:*"
+    "@sigstate/core": "^0.3.0",
+    "@sigstate/interop": "^0.3.0"
   }
 }

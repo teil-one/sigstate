@@ -19,5 +19,22 @@ export default defineConfig({
         },
       },
     },
+    {
+      dts: {
+        bundle: false,
+        distPath: 'dist',
+      },
+      format: 'cjs',
+      output: {
+        distPath: {
+          root: 'dist',
+        },
+        target: 'web',
+        minify: true,
+        sourceMap: {
+          js: 'cheap-module-source-map',
+        },
+      },
+    },
   ],
 });

@@ -1,22 +1,20 @@
 {
   "name": "sigstate",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "dev": "concurrently \"bun run build:watch\" \"bun run dev:*\"",
     "dev:shell": "bun run sleep3 && bun run --cwd ./packages/demo/shell dev",
     "dev:cart": "bun run sleep3 && bun run --cwd ./packages/demo/cart dev",
     "dev:payment": "bun run sleep3 && bun run --cwd ./packages/demo/payment start",
     "dev:total": "bun run sleep3 && bun run --cwd ./packages/demo/total dev",
-
-    "build": "bun run build:core && bun run build:interop && concurrently \"bun run build:preact\" \"bun run build:angular\" \"bun run build:react\"",
+    "build": "bun run build:core && bun run build:interop && concurrently \"bun run build:cross-iframe\" \"bun run build:preact\" \"bun run build:angular\" \"bun run build:react\"",
     "build:core": "bun run --cwd ./packages/@sigstate/core build",
     "build:interop": "bun run --cwd ./packages/@sigstate/interop build",
     "build:cross-iframe": "bun run --cwd ./packages/@sigstate/cross-iframe build",
     "build:preact": "bun run --cwd ./packages/@sigstate/preact build",
     "build:angular": "bun run --cwd ./packages/@sigstate/angular build",
     "build:react": "bun run --cwd ./packages/@sigstate/react build",
-
     "build:watch": "concurrently \"bun run build:watch:*\"",
     "build:watch:core": "bun run --cwd ./packages/@sigstate/core build --watch",
     "build:watch:interop": "bun run sleep1 && bun run --cwd ./packages/@sigstate/interop build --watch",
@@ -24,7 +22,6 @@
     "build:watch:preact": "bun run sleep2 && bun run --cwd ./packages/@sigstate/preact build --watch",
     "build:watch:angular": "bun run sleep2 && bun run --cwd ./packages/@sigstate/angular build --watch",
     "build:watch:react": "bun run sleep2 && bun run --cwd ./packages/@sigstate/react build --watch",
-
     "format": "prettier --write .",
     "lint": "eslint .",
     "sleep1": "bun -e \"setTimeout(()=>{}, 1000)\"",
@@ -37,7 +34,7 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.10.0",
-    "@rslib/core": "^0.0.13",
+    "@rslib/core": "^0.0.14",
     "@types/bun": "^1.1.11",
     "concurrently": "^8.2.2",
     "eslint": "^9.10.0",
